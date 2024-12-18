@@ -66,31 +66,47 @@
     #
     # ========= Architectures =========
     #
-    architectures = nixpkgs.lib.genAttrs [
+    forAllSystems = nixpkgs.lib.genAttrs [
       "x86_64-linux"
       #"aarch64-darwin"
     ];
     #
     # ========= Host Config Functions =========
     #
-    mkHost = host: {
+    mkHost = host: isDarwin: {
       ${host} = let
-        func = lib.nixosSystem;
+        func =
+          if isDarwin
+          then inputs.nix-darwin.lib.darwinSystem
+          else lib.nixosSystem;
         systemFunc = func;
       in
         systemFunc {
           specialArgs = {
-            inherit inputs outputs;
+            inherit
+              inputs
+              outputs
+              isDarwin
+              ;
+
+            # ========== Extend lib with lib.custom ==========
+            # NOTE: This approach allows lib.custom to propagate into hm
+            # see: https://github.com/nix-community/home-manager/pull/3454
             lib = nixpkgs.lib.extend (self: super: {custom = import ./lib {inherit (nixpkgs) lib;};});
           };
-          modules = [./hosts/nixos/${host}];
+          modules = [
+            ./hosts/${
+              if isDarwin
+              then "darwin"
+              else "nixos"
+            }/${host}
+          ];
         };
     };
-
+    # Invoke mkHost for each host config that is declared for either nixos or darwin
+    mkHostConfigs = hosts: isDarwin: lib.foldl (acc: set: acc // set) {} (lib.map (host: mkHost host isDarwin) hosts);
+    # Return the hosts declared in the given directory
     readHosts = folder: lib.attrNames (builtins.readDir ./hosts/${folder});
-
-    # Create a function that takes a host name and returns the configuration
-    mkHostConfig = host: mkHost host;
   in {
     #
     # ========= Overlays =========
@@ -102,13 +118,13 @@
     # ========= Host Configurations =========
     #
     # `just rebuild` or `nixos-rebuild --flake .#hostname`
-    nixosConfigurations = lib.map (host: mkHostConfig host) (readHosts "nixos");
+    nixosConfigurations = mkHostConfigs (readHosts "nixos") false;
 
     #
     # ========= Packages =========
     #
     # Add custom packages to be shared or upstreamed.
-    packages = architectures (
+    packages = forAllSystems (
       system: let
         pkgs = import nixpkgs {
           inherit system;
@@ -124,8 +140,8 @@
     # ========= Formatting and Checks =========
     #
     # Nix formatter available through 'nix fmt'.
-    formatter = architectures (system: nixpkgs.legacyPackages.${system}.alejandra);
-    checks = architectures (
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    checks = forAllSystems (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in
@@ -135,7 +151,7 @@
     # ========= DevShell =========
     #
     # Custom shell for bootstrapping on new hosts, modifying nix-config, and secrets management
-    devShells = architectures (
+    devShells = forAllSystems (
       system:
         import ./shell.nix {
           pkgs = nixpkgs.legacyPackages.${system};
