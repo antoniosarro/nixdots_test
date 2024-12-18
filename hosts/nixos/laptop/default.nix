@@ -22,6 +22,10 @@
       inputs.hardware.nixosModules.common-gpu-nvidia
     ];
     hardware.nvidia.open = true;
+    hardware.nvidia.prime = {
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 
   imports = lib.flatten [
