@@ -5,7 +5,7 @@
   ...
 }: let
   handle = config.hostSpec.handle;
-  publicGitEmail = config.hostSpec.email.gitHub;
+  publicGitEmail = config.hostSpec.email.github;
 in {
   programs.git = {
     enable = true;
