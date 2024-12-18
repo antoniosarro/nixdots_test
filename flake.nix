@@ -80,18 +80,17 @@
       in
         systemFunc {
           specialArgs = {
-            inherit
-              inputs
-              outputs
-              ;
+            inherit inputs outputs;
             lib = nixpkgs.lib.extend (self: super: {custom = import ./lib {inherit (nixpkgs) lib;};});
           };
           modules = [./hosts/nixos/${host}];
         };
     };
-    mkHostConfigs =
-      hosts: lib.foldl (acc: set: acc // set) { } (lib.map (host: mkHost host) hosts);
+
     readHosts = folder: lib.attrNames (builtins.readDir ./hosts/${folder});
+
+    # Create a function that takes a host name and returns the configuration
+    mkHostConfig = host: mkHost host;
   in {
     #
     # ========= Overlays =========
@@ -103,7 +102,7 @@
     # ========= Host Configurations =========
     #
     # `just rebuild` or `nixos-rebuild --flake .#hostname`
-    nixosConfigurations = mkHostConfigs (readHosts "nixos") false;
+    nixosConfigurations = lib.map (host: mkHostConfig host) (readHosts "nixos");
 
     #
     # ========= Packages =========
