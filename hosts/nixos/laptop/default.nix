@@ -21,6 +21,7 @@
     imports = lib.flatten [
       inputs.hardware.nixosModules.common-gpu-nvidia
     ];
+    hardware.nvidia.open = true;
   };
 
   imports = lib.flatten [
