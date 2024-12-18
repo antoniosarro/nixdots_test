@@ -89,7 +89,8 @@
           modules = [./hosts/nixos/${host}];
         };
     };
-    mkHostConfigs = hosts: lib.foldl (acc: set: acc // set) {} (lib.map (host: mkHost host) hosts);
+    mkHostConfigs =
+      hosts: lib.foldl (acc: set: acc // set) { } (lib.map (host: mkHost host) hosts);
     readHosts = folder: lib.attrNames (builtins.readDir ./hosts/${folder});
   in {
     #
