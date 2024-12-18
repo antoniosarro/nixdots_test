@@ -19,7 +19,6 @@
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-gpu-intel
     inputs.hardware.nixosModules.common-pc-ssd
-    inputs.hardware.nixosModules.common-gpu-nvidia-disable
 
     # ============================
     # Disk Layout
@@ -46,6 +45,12 @@
       "hosts/common/optional/wayland.nix" # wayland components and pkgs not available in home-manager
     ])
   ];
+
+  specialisation."integrated-gpu".configuration = {
+    imports = lib.flatten [
+      inputs.hardware.nixosModules.common-gpu-nvidia-disable
+    ];
+  };
 
   specialisation."dedicated-gpu".configuration = {
     imports = lib.flatten [
