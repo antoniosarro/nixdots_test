@@ -90,7 +90,7 @@
         };
     };
     mkHostConfigs =
-      hosts:  lib.foldl (acc: set: acc // set) { } (lib.map (host: mkHost host isDarwin) hosts);
+      hosts:  lib.foldl (acc: set: acc // set) { } (lib.map (host: mkHost host) hosts);
     readHosts = folder: lib.attrNames (builtins.readDir ./hosts/${folder});
   in {
     #
