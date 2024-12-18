@@ -39,7 +39,7 @@ in
   }
   // {
     home-manager.users.root = {
-      home.stateVersion = "23.05";
+      home.stateVersion = "24.11";
       programs.zsh = {
         enable = true;
       };
