@@ -61,7 +61,7 @@ in {
               (extension "open-graph-previewer" "ruben.winant@hotmail.com")
             ]
         )
-        {
+        // {
         };
     };
 
