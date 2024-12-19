@@ -52,7 +52,7 @@
 
         "ALT,Return,exec,${terminal}"
         "CTRL_ALT,v,exec,${terminal} ${editor}"
-        "CTRL_ALT,f,exec,${pkgs.thunar}/bin/thunar"
+        "CTRL_ALT,f,exec,thunar"
 
         # Screenshotting
         "CTRL_ALT,p,exec,${pkgs.grimblast}/bin/grimblast --notify --freeze copy area"
