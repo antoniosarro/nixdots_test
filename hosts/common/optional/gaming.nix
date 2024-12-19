@@ -61,4 +61,8 @@
       };
     };
   };
+
+  environment.systemPackages = [
+    pkgs.mangohud
+  ];
 }

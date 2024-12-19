@@ -17,6 +17,7 @@
       "--expose-wayland"
       "--steam"
       "--hdr-enabled"
+      "--mangoapp"
     ];
     steam = lib.concatStringsSep " " [
       "steam"
