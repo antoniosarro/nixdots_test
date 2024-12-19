@@ -104,5 +104,10 @@
       default = "1";
       description = "Used to indicate what scaling to use. Floating point number";
     };
+    theme = lib.mkOption {
+      default = {};
+      type = lib.types.attrsOf lib.types.anything;
+      description = "An attribute set of theme values";
+    };
   };
 }
