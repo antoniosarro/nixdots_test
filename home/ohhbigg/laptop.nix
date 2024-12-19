@@ -9,6 +9,7 @@
     # Host-specific Configs
     # ============================
     common/optional/browsers
+    common/optional/desktops
     common/optional/gaming
   ];
 

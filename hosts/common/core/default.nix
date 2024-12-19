@@ -27,6 +27,7 @@ in {
     email = {
       github = "tech@antoniosarro.dev";
     };
+    theme = import ../theme;
   };
 
   networking.hostName = config.hostSpec.hostName;

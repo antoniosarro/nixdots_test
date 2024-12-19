@@ -29,6 +29,15 @@ in {
     sessionPath = [
       "$HOME/.local/bin"
     ];
+    sessionVariables = {
+      FLAKE = "$HOME/nixdots";
+      SHELL = "zsh";
+      TERM = "kitty";
+      TERMINAL = "kitty";
+      VISUAL = "nvim";
+      EDITOR = "nvim";
+      MANPAGER = "batman";
+    };
     preferXdgDirectories = true;
   };
 
