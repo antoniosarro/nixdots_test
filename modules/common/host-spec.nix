@@ -109,5 +109,10 @@
       type = lib.types.attrsOf lib.types.anything;
       description = "An attribute set of theme values";
     };
+    keyboardLayout = lib.mkOption {
+      type = lib.types.str;
+      description = "Keyboard layout to use";
+      default = "us";
+    };
   };
 }

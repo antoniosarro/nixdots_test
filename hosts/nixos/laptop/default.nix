@@ -68,6 +68,7 @@
   # ============================
   hostSpec = {
     hostName = "laptop";
+    keyboardLayout = "it";
     # useYubikey = lib.mkForce false;
     # hdr = lib.mkForce false;
   };
