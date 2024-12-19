@@ -46,9 +46,9 @@
     in
       lib.flatten [
         # Quick Launch
-        "ALT,space,exec,rofi -show drun"
-        "SUPER,s,exec,rofi -show ssh"
-        "ALT,tab,exec,rofi -show window"
+        "ALT,space,exec,${pkgs.rofi}/bin/rofi -show drun"
+        "SUPER,s,exec,${pkgs.rofi}/bin/rofi -show ssh"
+        "ALT,tab,exec,${pkgs.rofi}/bin/rofi -show window"
 
         "ALT,Return,exec,${terminal}"
         "CTRL_ALT,v,exec,${terminal} ${editor}"
