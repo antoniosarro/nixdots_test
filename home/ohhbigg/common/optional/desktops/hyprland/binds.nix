@@ -43,6 +43,19 @@
     bind = let
       terminal = config.home.sessionVariables.TERM;
       editor = config.home.sessionVariables.EDITOR;
+
+      workspaces = [
+        "0"
+        "1"
+        "2"
+        "3"
+        "4"
+        "5"
+        "6"
+        "7"
+        "8"
+        "9"
+      ];
     in
       lib.flatten [
         # Quick Launch
@@ -74,6 +87,9 @@
         "SHIFTALT,F,togglefloating"
         "SHIFTALT, p, pin, active"
 
+        # Workspaces
+        (map (n: "$mainMod,${n},workspace,name:${n}") workspaces)
+        (map (n: "$mainMod SHIFT,${n},movetoworkspace,name:${n}") workspaces)
         # Misc
       ];
   };

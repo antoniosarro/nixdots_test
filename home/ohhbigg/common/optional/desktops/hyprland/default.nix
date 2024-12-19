@@ -91,8 +91,8 @@
         gaps_out = 10;
         border_size = 2;
 
-        col.active_border = "";
-        col.inactive_border = "";
+        "col.active_border" = "";
+        "col.inactive_border" = "";
 
         resize_on_border = true;
         hover_icon_on_border = true;
