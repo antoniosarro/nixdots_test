@@ -94,5 +94,7 @@
     systemd.enable = true;
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   system.stateVersion = "24.11";
 }
