@@ -1,4 +1,4 @@
-{lib, ...}: {
+{
   programs.starship = {
     enable = true;
     settings = {
@@ -11,7 +11,7 @@
         "$character"
       ];
       character = {
-        success_symbol = "[❯]";
+        success_symbol = "[❯](green)";
         error_symbol = "[❯](red)";
         vimcmd_symbol = "[❮](cyan)";
       };

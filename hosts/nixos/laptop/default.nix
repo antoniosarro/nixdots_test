@@ -21,6 +21,11 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     # ============================
+    # Nvidia
+    # ============================
+    inputs.hardware.nixosModules.common-gpu-nvidia-sync
+
+    # ============================
     # Disk Layout
     # ============================
     inputs.disko.nixosModules.disko
@@ -46,21 +51,19 @@
     ])
   ];
 
+  # ============================
+  # Nvidia
+  # ============================
+  hardware.nvidia.open = false;
+  hardware.nvidia.prime = {
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
+  };
+
   specialisation."integrated-gpu".configuration = {
     imports = lib.flatten [
       inputs.hardware.nixosModules.common-gpu-nvidia-disable
     ];
-  };
-
-  specialisation."dedicated-gpu".configuration = {
-    imports = lib.flatten [
-      inputs.hardware.nixosModules.common-gpu-nvidia-sync
-    ];
-    hardware.nvidia.open = false;
-    hardware.nvidia.prime = {
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
   };
 
   # ============================
