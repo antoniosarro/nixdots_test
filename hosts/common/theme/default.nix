@@ -6,19 +6,21 @@
   };
 
   colors = {
-    background = "0B0B0B";
-    background_alternative = "211F1D";
-    text = "EAF0F5";
-    accent = "f97316";
-
-    base00 = "#0B0B0B";
-    base01 = "#0f0f0f";
-    base03 = "#33302D";
-
-    base05 = "#EAF0F5";
-
-    base0A = "#f97316";
-
-    base0C = "#FFBA75";
+    base00 = "#212634";
+    base01 = "#444b56";
+    base02 = "#687077";
+    base03 = "#8c9599";
+    base04 = "#afbabb";
+    base05 = "#d3dfdc";
+    base06 = "#dae4e2";
+    base07 = "#e0e9e7";
+    base08 = "#5d7f7a";
+    base09 = "#976c7c";
+    base0A = "#c6534f";
+    base0B = "#74aaac";
+    base0C = "#577ba5";
+    base0D = "#c7e9e2";
+    base0E = "#a16873";
+    base0F = "#727e8c";
   };
 }

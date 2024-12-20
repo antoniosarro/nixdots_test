@@ -1,4 +1,4 @@
-{...}: {
+{config, ...}: {
   imports = [
     # ============================
     # Hardware Required Configs
@@ -22,4 +22,9 @@
       primary = true;
     }
   ];
+
+  file."${config.home.homeDirectory}/media/images/wallpapers" = {
+    recursive = true;
+    source = ../../wallpapers;
+  };
 }

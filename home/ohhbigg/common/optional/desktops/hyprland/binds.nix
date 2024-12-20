@@ -14,8 +14,8 @@
     # Mouse Binds
     # ============================
     bindm = [
-      "ALT,mouse:272,movewindow"
-      "ALT,mouse:273,resizewindow"
+      "$mainMod,mouse:272,movewindow"
+      "$mainMod,mouse:273,resizewindow"
     ];
 
     # ============================
@@ -43,29 +43,19 @@
     bind = let
       terminal = config.home.sessionVariables.TERM;
       editor = config.home.sessionVariables.EDITOR;
-
-      workspaces = [
-        "0"
-        "1"
-        "2"
-        "3"
-        "4"
-        "5"
-        "6"
-        "7"
-        "8"
-        "9"
-      ];
     in
-      lib.flatten [
+      [
+        # Power system
+        "$mainMod, ESCAPE, exec, powermenu"
+        "$mainMod, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
+
         # Quick Launch
-        "ALT,space,exec,${pkgs.rofi}/bin/rofi -show drun"
-        "SUPER,s,exec,${pkgs.rofi}/bin/rofi -show ssh"
+        "$mainMod,A,exec,${pkgs.rofi}/bin/rofi -show drun"
+        "$mainMod,S,exec,${pkgs.rofi}/bin/rofi -show ssh"
         "ALT,tab,exec,${pkgs.rofi}/bin/rofi -show window"
 
-        "ALT,Return,exec,${terminal}"
-        "CTRL_ALT,v,exec,${terminal} ${editor}"
-        "CTRL_ALT,f,exec,thunar"
+        "$mainMod, T,,exec,${terminal}"
+        "$mainMod,F,exec,thunar"
 
         # Screenshotting
         "CTRL_ALT,p,exec,${pkgs.grimblast}/bin/grimblast --notify --freeze copy area"
@@ -80,17 +70,27 @@
         ", XF86AudioPrev, exec, '${pkgs.playerctl}/bin/playerctl --ignore-player=firefox,chromium,brave previous'"
 
         # Close focused/active window
-        "SHIFTALT,q,killactive"
+        "$mainMod,Q,killactive"
 
         # Fullscreen
-        "ALT,f,fullscreenstate,2 -1" # `internal client`, where `internal` and `client` can be -1 - current, 0 - none, 1 - maximize, 2 - fullscreen, 3 - maximize and fullscreen
-        "SHIFTALT,F,togglefloating"
-        "SHIFTALT, p, pin, active"
+        "ALT,RETURN,fullscreen"
+        "$mainMod, W,togglefloating"
+        "ALT, P, pin, active"
 
-        # Workspaces
-        (map (n: "$mainMod,${n},workspace,name:${n}") workspaces)
-        (map (n: "$mainMod SHIFT,${n},movetoworkspace,name:${n}") workspaces)
+        # Scroll through workspaces with mouse
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
+
         # Misc
-      ];
+        "SHIFTALT,r,exec,hyprctl reload" # reload the configuration file
+      ]
+      ++ (builtins.concatLists (builtins.genList (i: let
+          ws = i + 1;
+        in [
+          "$mainMod, code:1${toString i}, workspace, ${toString ws}"
+          "$mainMod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+          "$mainMod ALT, code:1${toString i}, movetoworkspacesilent, ${toString ws}"
+        ])
+        10));
   };
 }
