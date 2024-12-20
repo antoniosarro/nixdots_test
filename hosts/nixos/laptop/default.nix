@@ -23,7 +23,7 @@
     # ============================
     # Nvidia
     # ============================
-    inputs.hardware.nixosModules.common-gpu-nvidia-sync
+    inputs.hardware.nixosModules.common-gpu-nvidia
 
     # ============================
     # Disk Layout
