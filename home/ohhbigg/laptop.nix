@@ -23,7 +23,7 @@
     }
   ];
 
-  file."${config.home.homeDirectory}/media/images/wallpapers" = {
+  home.file."${config.home.homeDirectory}/media/images/wallpapers" = {
     recursive = true;
     source = ../../wallpapers;
   };
