@@ -54,7 +54,7 @@
         "$mainMod,S,exec,${pkgs.rofi}/bin/rofi -show ssh"
         "ALT,tab,exec,${pkgs.rofi}/bin/rofi -show window"
 
-        "$mainMod, T,,exec,${terminal}"
+        "$mainMod,T,exec,${terminal}"
         "$mainMod,F,exec,thunar"
 
         # Screenshotting

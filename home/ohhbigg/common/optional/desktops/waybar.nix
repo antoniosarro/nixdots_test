@@ -30,7 +30,7 @@
         modules-right = [];
 
         "custom/launcher" = {
-          "format" = " <span color='#6a92d7'> </span>";
+          "format" = " <span color='#6a92d7'> </span>";
           "on-click" = "rofi -show drun";
         };
 
