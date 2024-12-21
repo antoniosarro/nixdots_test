@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   systemd.user.services.waybar = {
@@ -27,7 +28,17 @@
         margin-right = 10;
         modules-left = ["custom/launcher" "cpu" "memory" "hyprland/workspaces"];
         modules-center = [];
-        modules-right = [];
+        modules-right =
+          [
+            "tray"
+          ]
+          ++ lib.optional (config.hostSpec.hostname == "laptop") ["backlight"]
+          ++ [
+            "pulseaudio"
+            "network"
+          ]
+          ++ lib.optional (config.hostSpec.hostname == "laptop") ["battery"]
+          ++ ["clock" "custom/power-menu"];
 
         # ============================
         # Module Left
@@ -62,6 +73,14 @@
             "default" = "";
           };
         };
+
+        # ============================
+        # Module Center
+        # ============================
+
+        # ============================
+        # Module Right
+        # ============================
       };
     };
     style = ''
