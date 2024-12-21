@@ -32,12 +32,12 @@
           [
             "tray"
           ]
-          ++ lib.optional (config.hostSpec.hostname == "laptop") ["backlight"]
+          ++ lib.optional (config.hostSpec.hostName == "laptop") ["backlight"]
           ++ [
             "pulseaudio"
             "network"
           ]
-          ++ lib.optional (config.hostSpec.hostname == "laptop") ["battery"]
+          ++ lib.optional (config.hostSpec.hostName == "laptop") ["battery"]
           ++ ["clock" "custom/power-menu"];
 
         # ============================
