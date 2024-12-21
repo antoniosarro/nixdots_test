@@ -136,6 +136,10 @@ in {
           "format-alt" = "<span color='#bf616a'> </span>{:%I:%M %p}";
           "tooltip-format" = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
         };
+        "custom/power-menu" = {
+          "format" = " <span color='#6a92d7'>⏻ </span>";
+          "on-click" = "bash ~/.config/waybar/scripts/power-menu/powermenu.sh";
+        };
       };
     };
     style = ''
@@ -197,7 +201,8 @@ in {
       #pulseaudio,
       #network,
       #battery,
-      #clock{
+      #clock,
+      #custom-power-menu{
         padding: 0 10px;
         color: #e5e5e5;
         /* color: #bf616a; */
@@ -286,6 +291,13 @@ in {
       #clock {
         color: #c8d2e0;
         /* background-color: #14141e; */
+      }
+
+      #custom-power-menu {
+        border-radius: 9.5px;
+        background-color: #1b242b;
+        border-radius: 7.5px;
+        padding: 0 5px;
       }
 
       /* If workspaces is the leftmost module, omit left margin */
