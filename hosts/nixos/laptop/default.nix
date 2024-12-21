@@ -41,7 +41,6 @@
       "hosts/common/optional/audio.nix" # pipewire and cli controls
       "hosts/common/optional/gaming.nix" # steam, gamescope, gamemode, and related hardware
       "hosts/common/optional/hyprland.nix" # window manager
-      "hosts/common/optional/nvtop.nix" # GPU monitor
       "hosts/common/optional/obsidian.nix" # Notes
       "hosts/common/optional/plymouth.nix" # Animated boot screen
       "hosts/common/optional/scanning.nix" # SANE and simple-scan

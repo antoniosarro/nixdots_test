@@ -25,19 +25,34 @@
         margin-left = 10;
         margin-bottom = 0;
         margin-right = 10;
-        modules-left = ["custom/launcher"];
+        modules-left = ["custom/launcher" "cpu" "memory"];
         modules-center = [];
         modules-right = [];
 
+        # ============================
+        # Module Left
+        # ============================
         "custom/launcher" = {
-          "format" = " <span color='#6a92d7'> </span>";
+          "format" = " <span color='#ce703b'> </span>";
           "on-click" = "rofi -show drun";
+        };
+        "cpu" = {
+          "interval" = 10;
+          "format" = "󰄧 {}%";
+          "max-length" = 10;
+          "on-click" = "";
+        };
+        "memory" = {
+          "interval" = 30;
+          "format" = " {}%";
+          "format-alt" = " {used:0.1f}G";
+          "max-length" = 10;
         };
       };
     };
     style = ''
       * {
-          font-family: SFProDisplay Nerd Font;
+          font-family: "${config.hostSpec.theme.font.base}";
           font-size: 16px;
       }
 
@@ -56,11 +71,30 @@
            opacity: 0.2;
       }
 
+      #cpu,
+      #memory{
+        padding: 0 10px;
+        color: #e5e5e5;
+        /* color: #bf616a; */
+        border-radius: 9.5px;
+        background-color: #1f2530;
+      }
+
       #custom-launcher {
           background-color: #1b242b;
           color: #6a92d7;
           border-radius: 7.5px;
           padding: 0 3px;
+      }
+
+      #cpu {
+        color: #fb958b;
+        background-color: #1f2530;
+      }
+
+      #memory {
+        color: #ebcb8b;
+        background-color: #1f2530;
       }
 
       /* If workspaces is the leftmost module, omit left margin */

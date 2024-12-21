@@ -5,7 +5,10 @@
   ...
 }: {
   imports = [
-    ./binds.nix # Hyprlan binds
+    ./binds.nix # Hyprland binds
+
+    ./hyprpaper.nix
+    ./hyprlock.nix
   ];
 
   home.packages = builtins.attrValues {
@@ -91,8 +94,8 @@
         gaps_out = 10;
         border_size = 2;
 
-        "col.active_border" = "";
-        "col.inactive_border" = "";
+        "col.active_border" = "rgb(${config.hostSpec.theme.colors.base0D})";
+        "col.inactive_border" = "rgb(${config.hostSpec.theme.colors.base03})";
 
         resize_on_border = true;
         hover_icon_on_border = true;
