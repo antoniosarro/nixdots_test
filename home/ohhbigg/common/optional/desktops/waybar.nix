@@ -132,9 +132,27 @@ in {
           "format-icons" = [" " " " " " " " " "];
         };
         "clock" = {
-          "format" = "<span color='#bf616a'> </span>{:%a %b %d}";
-          "format-alt" = "<span color='#bf616a'> </span>{:%I:%M %p}";
-          "tooltip-format" = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
+          "format" = "<span color='#bf616a'>  </span>{:%a, %b %d}";
+          "format-alt" = "<span color='#bf616a'>  </span>{:%I:%M %p}";
+          "tooltip-format" = "<tt><small>{calendar}</small></tt>";
+          "calendar" = {
+            "mode" = "month";
+            "mode-mon-col" = 3;
+            "on-scroll" = 1;
+            "on-click-right" = "mode";
+            "format" = {
+              "months" = "<span color='#ffffff'><b>{}</b></span>";
+              "weekdays" = "<span color='#bf616a'><b>{}</b></span>";
+              "today" = "<span color='#bf616a'><b>{}</b></span>";
+            };
+          };
+          "actions" = {
+            "on-click-right" = "mode";
+            "on-click-forward" = "tz_up";
+            "on-click-backward" = "tz_down";
+            "on-scroll-up" = "shift_up";
+            "on-scroll-down" = "shift_down";
+          };
         };
         "custom/power-menu" = {
           "format" = " <span color='#6a92d7'>⏻ </span>";
