@@ -112,7 +112,6 @@ in {
           "format-ethernet" = "󰈀 wired";
           "format-disconnected" = "󰖪";
           "on-click" = "bash ~/.config/waybar/scripts/rofi-wifi-menu.sh";
-          "format-disconnected" = "Disconnected  ";
         };
         "battery" = {
           "bat" = "";
