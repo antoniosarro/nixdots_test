@@ -141,6 +141,7 @@ in {
     style = ''
       * {
           font-family: "${config.hostSpec.theme.font.base}";
+          font-weight: 700;
           font-size: 16px;
       }
 
