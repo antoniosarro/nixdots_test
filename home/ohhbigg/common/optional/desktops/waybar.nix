@@ -25,7 +25,7 @@
         margin-left = 10;
         margin-bottom = 0;
         margin-right = 10;
-        modules-left = ["custom/launcher" "cpu" "memory"];
+        modules-left = ["custom/launcher" "cpu" "memory" "hyprland/workspaces"];
         modules-center = [];
         modules-right = [];
 
@@ -47,6 +47,20 @@
           "format" = " {}%";
           "format-alt" = " {used:0.1f}G";
           "max-length" = 10;
+        };
+        "hyprland/workspaces" = {
+          "format" = "{icon}";
+          "on-click" = "activate";
+          "format-icons" = {
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
+            "5" = "";
+            "urgent" = "";
+            "active" = "";
+            "default" = "";
+          };
         };
       };
     };
@@ -71,12 +85,50 @@
            opacity: 0.2;
       }
 
+      #workspaces button {
+        padding: 0 5px;
+        color: #7984A4;
+        background-color: transparent;
+        /* Use box-shadow instead of border so the text isn't offset */
+        box-shadow: inset 0 -3px transparent;
+        /* Avoid rounded borders under each workspace name */
+        border: none;
+        border-radius: 0;
+      }
+
+      #workspaces button.focused {
+        color: #bf616a;
+      }
+
+      #workspaces button.active {
+        color: #6a92d7;
+      }
+
+      #workspaces button.urgent {
+        background-color: #eb4d4b;
+      }
+
+      #window {
+        /* border-radius: 20px; */
+        /* padding-left: 10px; */
+        /* padding-right: 10px; */
+        color: #64727d;
+      }
+
       #cpu,
       #memory{
         padding: 0 10px;
         color: #e5e5e5;
         /* color: #bf616a; */
         border-radius: 9.5px;
+        background-color: #1f2530;
+      }
+
+
+      #window,
+      #workspaces {
+        margin: 0 4px;
+        border-radius: 7.8px;
         background-color: #1f2530;
       }
 
