@@ -3,7 +3,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  monitor = lib.head (lib.filter (m: m.primary) config.monitors);
+in {
   systemd.user.services.waybar = {
     Unit.StartLimitBurst = 30;
   };
@@ -81,6 +83,60 @@
         # ============================
         # Module Right
         # ============================
+        "tray" = {
+          "spacing" = 10;
+        };
+        "backlight" = {
+          "device" = "${monitor.name}";
+          "format" = "{icon} {percent}%";
+          "format-icons" = ["" "" "" "" "" "" "" "" ""];
+          "on-click" = "";
+        };
+        "pulseaudio" = {
+          "format" = "{icon} {volume}%";
+          "format-bluetooth" = "  {volume}%";
+          "format-bluetooth-muted" = "󰟎 ";
+          "format-muted" = "󰟎";
+          "format-icons" = {
+            "headphone" = "";
+            "headset" = "󰋎";
+            "phone" = "";
+            "portable" = "";
+            "car" = "";
+            "default" = ["" "" ""];
+          };
+          "on-click" = "pavucontrol";
+        };
+        "network" = {
+          "format-wifi" = "󰖩 {signalStrength}%";
+          "format-ethernet" = "󰈀 wired";
+          "format-disconnected" = "󰖪";
+          "on-click" = "bash ~/.config/waybar/scripts/rofi-wifi-menu.sh";
+          "format-disconnected" = "Disconnected  ";
+        };
+        "battery" = {
+          "bat" = "";
+          "adapter" = "";
+          "interval" = 60;
+          "states" = {
+            "warning" = 30;
+            "critical" = 15;
+          };
+          "max-length" = 20;
+          "format" = "{icon} {capacity}%";
+          "format-warning" = "{icon} {capacity}%";
+          "format-critical" = "{icon} {capacity}%";
+          "format-charging" = "<span font-family='Font Awesome 6 Free'></span> {capacity}%";
+          "format-plugged" = "  {capacity}%";
+          "format-alt" = "{icon} {time}";
+          "format-full" = "  {capacity}%";
+          "format-icons" = [" " " " " " " " " "];
+        };
+        "clock" = {
+          "format" = "<span color='#bf616a'> </span>{:%a %b %d}";
+          "format-alt" = "<span color='#bf616a'> </span>{:%I:%M %p}";
+          "tooltip-format" = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
+        };
       };
     };
     style = ''
@@ -135,7 +191,13 @@
       }
 
       #cpu,
-      #memory{
+      #memory,
+      #tray,
+      #backlight,
+      #pulseaudio,
+      #network,
+      #battery,
+      #clock{
         padding: 0 10px;
         color: #e5e5e5;
         /* color: #bf616a; */
@@ -166,6 +228,64 @@
       #memory {
         color: #ebcb8b;
         background-color: #1f2530;
+      }
+
+      #tray > .passive {
+        -gtk-icon-effect: dim;
+      }
+
+      #tray > .needs-attention {
+        -gtk-icon-effect: highlight;
+        background-color: #eb4d4b;
+      }
+
+      #backlight {
+        color: #8fbcbb;
+      }
+
+      #pulseaudio {
+        color: #7d9bba;
+      }
+
+      #network {
+        color: #b48ead;
+      }
+
+      #network.disconnected {
+        color: #f53c3c;
+      }
+
+      #battery {
+        color: #c0caf5;
+        /* background-color: #90b1b1; */
+      }
+
+      #battery.charging,
+      #battery.full,
+      #battery.plugged {
+        color: #26a65b;
+        /* background-color: #26a65b; */
+      }
+
+      @keyframes blink {
+        to {
+          background-color: rgba(30, 34, 42, 0.5);
+          color: #abb2bf;
+        }
+      }
+
+      #battery.critical:not(.charging) {
+        color: #f53c3c;
+        animation-name: blink;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      #clock {
+        color: #c8d2e0;
+        /* background-color: #14141e; */
       }
 
       /* If workspaces is the leftmost module, omit left margin */
