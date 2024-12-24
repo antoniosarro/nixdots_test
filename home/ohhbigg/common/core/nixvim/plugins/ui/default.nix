@@ -1,7 +1,7 @@
 {
   imports = [
     ./colorschemes.nix
-    ./nvim-colorizer.nix
+    ./colorizer.nix
     ./alpha.nix
   ];
 }
