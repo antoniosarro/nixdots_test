@@ -3,7 +3,9 @@
   config,
   lib,
   ...
-}: {
+}: let
+  removeHashtag = builtins.substring 1;
+in {
   imports = [
     ./binds.nix # Hyprland binds
 
@@ -94,8 +96,8 @@
         gaps_out = 10;
         border_size = 2;
 
-        "col.active_border" = "rgb(${config.hostSpec.theme.colors.base0D})";
-        "col.inactive_border" = "rgb(${config.hostSpec.theme.colors.base03})";
+        "col.active_border" = "rgb(${removeHashtag config.hostSpec.theme.colors.base0D})";
+        "col.inactive_border" = "rgb(${removeHashtag config.hostSpec.theme.colors.base03})";
 
         resize_on_border = true;
         hover_icon_on_border = true;

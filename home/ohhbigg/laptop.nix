@@ -12,6 +12,7 @@
     common/optional/desktops
     common/optional/comms
     common/optional/gaming
+    common/optional/media
   ];
 
   monitors = [
