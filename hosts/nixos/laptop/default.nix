@@ -39,6 +39,7 @@
       "hosts/common/optional/services/greetd.nix" # display manager
       "hosts/common/optional/services/printing.nix" # CUPS
       "hosts/common/optional/audio.nix" # pipewire and cli controls
+      "hosts/common/optional/bluetooth.nix" # bluetooth service
       "hosts/common/optional/gaming.nix" # steam, gamescope, gamemode, and related hardware
       "hosts/common/optional/hyprland.nix" # window manager
       "hosts/common/optional/obsidian.nix" # Notes
@@ -47,6 +48,7 @@
       "hosts/common/optional/thunar.nix" # file manager
       "hosts/common/optional/vlc.nix" # media player
       "hosts/common/optional/wayland.nix" # wayland components and pkgs not available in home-manager
+      "hosts/common/optional/virtualisation.nix" # Qemu & Docker
     ])
   ];
 

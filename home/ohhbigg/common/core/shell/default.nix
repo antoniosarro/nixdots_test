@@ -24,6 +24,7 @@
       (pkgs)
       btop # resource monitor
       curl
+      wget
       ;
   };
 }

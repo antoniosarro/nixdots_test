@@ -12,7 +12,7 @@
       settings = {
         default_session = {
           command = "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
-          user = "ohhbigg";
+          user = "greeter";
         };
       };
     };

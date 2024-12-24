@@ -41,6 +41,22 @@ in {
     preferXdgDirectories = true;
   };
 
+  home.packages = builtins.attrValues {
+    inherit
+      (pkgs)
+      coreutils # basic gnu utils
+      dust # disk usage
+      jq # JSON pretty printer and manipulator
+      ncdu # TUI disk usage
+      pre-commit # git hooks
+      p7zip # compression & encryption
+      steam-run # for running non-NixOS-packaged binaries on Nix
+      unzip # zip extraction
+      unrar # rar extraction
+      zip # zip compression
+      ;
+  };
+
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
