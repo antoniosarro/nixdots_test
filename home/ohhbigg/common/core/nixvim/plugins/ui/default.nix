@@ -1,7 +1,9 @@
 {
   imports = [
-    ./colorschemes.nix
-    ./colorizer.nix
     ./alpha.nix
+    ./bufferline.nix
+    ./colorizer.nix
+    ./colorschemes.nix
+    ./dressing.nix
   ];
 }
