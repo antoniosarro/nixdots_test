@@ -7,7 +7,7 @@
     nixvim-config.ui.alpha.enable = lib.mkEnableOption "enables alpha module";
   };
 
-  config = lib.mkIf config.nixvim-config.plugins.alpha.enable {
+  config = lib.mkIf config.nixvim-config.ui.alpha.enable {
     programs.nixvim.plugins = {
       web-devicons.enable = true;
       alpha = let
