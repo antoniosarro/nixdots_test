@@ -22,58 +22,58 @@
                 bg = "none";
               };
               background = {
-                fg = config.hostSpec.theme.colors.base03;
-                bg = config.hostSpec.theme.colors.base01;
+                fg = "#" + config.hostSpec.theme.colors.base03;
+                bg = "#" + config.hostSpec.theme.colors.base01;
               };
               buffer_selected = {
-                fg = config.hostSpec.theme.colors.base05;
+                fg = "#" + config.hostSpec.theme.colors.base05;
                 italic = false;
               };
               buffer_visible = {
-                fg = config.hostSpec.theme.colors.base03;
-                bg = config.hostSpec.theme.colors.base00;
+                fg = "#" + config.hostSpec.theme.colors.base03;
+                bg = "#" + config.hostSpec.theme.colors.base00;
               };
               close_button = {
-                fg = config.hostSpec.theme.colors.base03;
-                bg = config.hostSpec.theme.colors.base01;
+                fg = "#" + config.hostSpec.theme.colors.base03;
+                bg = "#" + config.hostSpec.theme.colors.base01;
               };
               close_button_visible = {
-                fg = config.hostSpec.theme.colors.base03;
-                bg = config.hostSpec.theme.colors.base01;
+                fg = "#" + config.hostSpec.theme.colors.base03;
+                bg = "#" + config.hostSpec.theme.colors.base01;
               };
               close_button_selected = {
-                fg = config.hostSpec.theme.colors.base08;
+                fg = "#" + config.hostSpec.theme.colors.base08;
               };
 
               indicator_selected = {
-                fg = config.hostSpec.theme.colors.base00;
+                fg = "#" + config.hostSpec.theme.colors.base00;
               };
               indicator_visible = {
-                fg = config.hostSpec.theme.colors.base00;
-                bg = config.hostSpec.theme.colors.base00;
+                fg = "#" + config.hostSpec.theme.colors.base00;
+                bg = "#" + config.hostSpec.theme.colors.base00;
               };
               separator = {
-                fg = config.hostSpec.theme.colors.base01;
-                bg = config.hostSpec.theme.colors.base01;
+                fg = "#" + config.hostSpec.theme.colors.base01;
+                bg = "#" + config.hostSpec.theme.colors.base01;
               };
               modified = {
-                fg = config.hostSpec.theme.colors.base03;
-                bg = config.hostSpec.theme.colors.base00;
+                fg = "#" + config.hostSpec.theme.colors.base03;
+                bg = "#" + config.hostSpec.theme.colors.base00;
               };
               modified_visible = {
-                fg = config.hostSpec.theme.colors.base00;
-                bg = config.hostSpec.theme.colors.base00;
+                fg = "#" + config.hostSpec.theme.colors.base00;
+                bg = "#" + config.hostSpec.theme.colors.base00;
               };
               modified_selected = {
-                fg = config.hostSpec.theme.colors.base0B;
+                fg = "#" + config.hostSpec.theme.colors.base0B;
               };
               tab_close = {
-                fg = config.hostSpec.theme.colors.base00;
-                bg = config.hostSpec.theme.colors.base00;
+                fg = "#" + config.hostSpec.theme.colors.base00;
+                bg = "#" + config.hostSpec.theme.colors.base00;
               };
               duplicate = {
-                fg = config.hostSpec.theme.colors.base03;
-                bg = config.hostSpec.theme.colors.base01;
+                fg = "#" + config.hostSpec.theme.colors.base03;
+                bg = "#" + config.hostSpec.theme.colors.base01;
               };
             };
           };
