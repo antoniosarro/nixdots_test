@@ -93,13 +93,13 @@
           }
         ];
       };
-      highlight = {
-        AlphaHeader = {
-          fg = "#" + config.hostSpec.theme.colors.base0D;
-        };
-        AlphaFooter = {
-          fg = "#" + config.hostSpec.theme.colors.base0F;
-        };
+    };
+    programs.nixvim.highlight = {
+      AlphaHeader = {
+        fg = "#" + config.hostSpec.theme.colors.base0D;
+      };
+      AlphaFooter = {
+        fg = "#" + config.hostSpec.theme.colors.base0F;
       };
     };
   };
