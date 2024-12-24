@@ -33,6 +33,7 @@ in {
   networking.hostName = config.hostSpec.hostName;
 
   home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "bk";
 
   nixpkgs = {
