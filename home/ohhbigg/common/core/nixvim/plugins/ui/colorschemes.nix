@@ -4,10 +4,10 @@
   ...
 }: {
   options = {
-    nixvim-config.ui.colorschemes.enable = lib.mkEnableOption "enables colorschemes module";
+    nixvim-config.colorschemes.enable = lib.mkEnableOption "enables colorschemes module";
   };
 
-  config = lib.mkIf config.nixvim-config.ui.colorschemes.enable {
+  config = lib.mkIf config.nixvim-config.colorschemes.enable {
     programs.nixvim = {
       colorschemes = {
         base16 = {
