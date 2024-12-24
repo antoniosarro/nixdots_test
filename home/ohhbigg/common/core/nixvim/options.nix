@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   programs.nixvim = {
-    nixpkgs.pkgs = import <nixpkgs> {};
     enable = true;
     globals = {
       mapleader = " ";
