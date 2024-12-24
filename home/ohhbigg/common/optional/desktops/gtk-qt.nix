@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   catppuccinAccent = "Blue";
   catppuccinFlavor = "Mocha";
 
@@ -8,13 +12,10 @@
   };
   qtThemeName = "catppuccin-${lib.toLower catppuccinFlavor}-${lib.toLower catppuccinAccent}";
 in {
-  home.packages = builtins.attrValues {
-    inherit
-      (pkgs)
-      papirus-folders
-      catppuccinKvantum
-      ;
-  };
+  home.packages = with pkgs; [
+    papirus-folders
+    catppuccinKvantum
+  ];
 
   gtk = {
     enable = true;
@@ -33,9 +34,9 @@ in {
         accent = "${lib.toLower catppuccinAccent}";
       };
     };
-  };
 
-  gtkr.extraConfig.gtk-application-prefer-dark-theme = true;
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+  };
 
   qt = {
     enable = true;
