@@ -7,7 +7,7 @@
 
       # Font
       font_family = config.hostSpec.theme.font.mono;
-      font_size = config.var.theme.font.size;
+      font_size = config.hostSpec.theme.font.size;
 
       # Theme
       foreground = "#" + config.hostSpec.theme.colors.base05;

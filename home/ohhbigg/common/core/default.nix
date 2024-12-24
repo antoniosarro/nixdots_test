@@ -13,6 +13,7 @@ in {
       "modules/home-manager"
     ])
     ./${platform}.nix
+    ./nixvim
     ./shell
     ./fonts.nix
     ./git.nix
