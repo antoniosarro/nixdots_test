@@ -32,10 +32,6 @@
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
-                  crypttabExtraOpts = [
-                    "fido2-device=auto"
-                    "token-timeout=10"
-                  ];
                 };
                 content = {
                   type = "btrfs";
@@ -50,6 +46,13 @@
                     };
                     "@/home" = {
                       mountpoint = "/home";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "@persist" = {
+                      mountpoint = "/persist";
                       mountOptions = [
                         "compress=zstd"
                         "noatime"
@@ -71,8 +74,4 @@
       };
     };
   };
-
-  environment.systemPackages = [
-    pkgs.yubikey-manager
-  ];
 }

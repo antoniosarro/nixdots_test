@@ -28,7 +28,7 @@ in {
         margin-left = 10;
         margin-bottom = 0;
         margin-right = 10;
-        modules-left = ["custom/launcher" "cpu" "memory" "hyprland/workspaces"];
+        modules-left = ["custom/launcher" "gamemode" "hyprland/workspaces"];
         modules-center = [];
         modules-right =
           [
@@ -40,7 +40,7 @@ in {
             "network"
           ]
           ++ lib.optional (config.hostSpec.hostName == "laptop") "battery"
-          ++ ["gamemode" "clock" "custom/power-menu"];
+          ++ ["clock" "custom/power-menu"];
 
         # ============================
         # Module Left
