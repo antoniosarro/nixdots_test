@@ -8,6 +8,7 @@
       
       # Productivity
       
+      copyq
       drawio
       libreoffice
       obsidian

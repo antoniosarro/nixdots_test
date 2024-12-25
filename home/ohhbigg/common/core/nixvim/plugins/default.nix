@@ -51,7 +51,6 @@
     # ============================
     # Utils
     # ============================
-    nixvim-config.utils.colorizer.enable = lib.mkDefault true;
     nixvim-config.utils.comment-box.enable = lib.mkDefault true;
     nixvim-config.utils.comment.enable = lib.mkDefault true;
     nixvim-config.utils.grapple.enable = lib.mkDefault true;

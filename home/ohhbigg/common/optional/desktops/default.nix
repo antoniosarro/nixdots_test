@@ -5,5 +5,6 @@
     ./waybar.nix
     ./rofi.nix
     ./gtk-qt.nix
+    ./gammastep.nix
   ];
 }

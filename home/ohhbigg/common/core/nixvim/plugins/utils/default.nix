@@ -1,6 +1,5 @@
 {
   imports = [
-    ./colorizer.nix
     ./comment-box.nix
     ./comment.nix
     ./grapple.nix
