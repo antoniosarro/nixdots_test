@@ -50,7 +50,7 @@
         "$mainMod, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
 
         # Quick Launch
-        "$mainMod,A,exec,${pkgs.rofi}/bin/rofi -show drun"
+        "$mainMod,A,exec,appmenu"
         "$mainMod,S,exec,${pkgs.rofi}/bin/rofi -show ssh"
         "ALT,tab,exec,${pkgs.rofi}/bin/rofi -show window"
 

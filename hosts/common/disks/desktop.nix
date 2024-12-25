@@ -72,6 +72,40 @@
           };
         };
       };
+      extra = {
+        type = "disk";
+        device = "/dev/nvme0n1"; # 1000GB
+        content = {
+          type = "gpt";
+          partitions = {
+            luks = {
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "cryptextra";
+                passwordFile = "/tmp/disko-password";
+                settings = {
+                  allowDiscards = true;
+                  bypassWorkqueues = true;
+                };
+                content = {
+                  type = "btrfs";
+                  extraArgs = ["-f"];
+                  subvolumes = {
+                    "@games" = {
+                      mountpoint = "/mnt/games";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
     };
   };
 }

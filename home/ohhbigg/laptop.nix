@@ -14,6 +14,7 @@
     common/optional/gaming
     common/optional/media
     common/optional/tools
+    common/optional/scripts
   ];
 
   monitors = [
