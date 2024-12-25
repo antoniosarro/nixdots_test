@@ -1,7 +1,7 @@
 {
   imports = [
     ./colorizer.nix
-    ./commnet-box.nix
+    ./comment-box.nix
     ./comment.nix
     ./grapple.nix
     ./hardtime.nix

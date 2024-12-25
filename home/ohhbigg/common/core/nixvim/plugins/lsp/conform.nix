@@ -9,7 +9,7 @@
 
   config = lib.mkIf config.nixvim-config.lsp.conform.enable {
     programs.nixvim.plugins = {
-      conform = {
+      conform-nvim = {
         enable = true;
         settings = {
           format_on_save = {

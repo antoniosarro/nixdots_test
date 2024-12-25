@@ -8,6 +8,6 @@
     ./noice.nix
     ./presence-nvim.nix
     ./telescope.nix
-    ./web-devicons
+    ./web-devicons.nix
   ];
 }

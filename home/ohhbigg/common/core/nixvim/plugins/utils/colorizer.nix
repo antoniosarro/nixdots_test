@@ -9,7 +9,7 @@
 
   config = lib.mkIf config.nixvim-config.utils.colorizer.enable {
     programs.nixvim.plugins = {
-      nvim-colorizer = {
+      colorizer = {
         enable = true;
       };
     };

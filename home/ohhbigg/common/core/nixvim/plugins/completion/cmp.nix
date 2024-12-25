@@ -4,7 +4,7 @@
   ...
 }: {
   options = {
-    nixvim-config.completion.cmp = lib.mkEnableOption "enables cmp module";
+    nixvim-config.completion.cmp.enable = lib.mkEnableOption "enables cmp module";
   };
 
   config = lib.mkIf config.nixvim-config.completion.cmp.enable {

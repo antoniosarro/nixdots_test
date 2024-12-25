@@ -2,6 +2,6 @@
   imports = [
     ./cmp.nix
     ./schemastore.nix
-    ./lspkind
+    ./lspkind.nix
   ];
 }

@@ -9,7 +9,7 @@
 
   config = lib.mkIf config.nixvim-config.git.gitlinker.enable {
     programs.nixvim.plugins = {
-      lazygit = {
+      gitlinker = {
         enable = true;
         callbacks = {
           "github.com" = "get_github_type_url";
