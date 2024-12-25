@@ -40,7 +40,7 @@ in {
             "network"
           ]
           ++ lib.optional (config.hostSpec.hostName == "laptop") "battery"
-          ++ ["clock" "custom/power-menu"];
+          ++ ["gamemode" "clock" "custom/power-menu"];
 
         # ============================
         # Module Left
@@ -131,6 +131,18 @@ in {
           "format-full" = "  {capacity}%";
           "format-icons" = [" " " " " " " " " "];
         };
+        "gamemode" = {
+          "format" = "{glyph}";
+          "format-alt" = "{glyph} {count}";
+          "glyph" = "󰊴";
+          "hide-not-running" = true;
+          "use-icon" = true;
+          "icon-name" = "input-gaming-symbolic";
+          "icon-spacing" = 4;
+          "icon-size" = 20;
+          "tooltip" = true;
+          "tooltip-format" = "Games running: {count}";
+        };
         "clock" = {
           "format" = "<span color='#bf616a'>  </span>{:%a, %b %d}";
           "format-alt" = "<span color='#bf616a'>  </span>{:%I:%M %p}";
@@ -219,6 +231,7 @@ in {
       #pulseaudio,
       #network,
       #battery,
+      #gamemode,
       #clock,
       #custom-power-menu{
         padding: 0 10px;
