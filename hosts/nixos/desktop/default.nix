@@ -29,6 +29,51 @@
     (map lib.custom.relativeToRoot [
       # Required Configs
       "hosts/common/core"
+
+      # Optional Configs
+      "hosts/common/optional/services/greetd.nix" # display manager
+      "hosts/common/optional/services/printing.nix" # CUPS
+      "hosts/common/optional/audio.nix" # pipewire and cli controls
+      "hosts/common/optional/bluetooth.nix" # bluetooth service
+      "hosts/common/optional/gaming.nix" # steam, gamescope, gamemode, and related hardware
+      "hosts/common/optional/hyprland.nix" # window manager
+      "hosts/common/optional/obsidian.nix" # Notes
+      "hosts/common/optional/plymouth.nix" # Animated boot screen
+      "hosts/common/optional/scanning.nix" # SANE and simple-scan
+      "hosts/common/optional/thunar.nix" # file manager
+      "hosts/common/optional/vlc.nix" # media player
+      "hosts/common/optional/wayland.nix" # wayland components and pkgs not available in home-manager
+      "hosts/common/optional/virtualisation.nix" # Qemu & Docker
     ])
   ];
+
+  # ============================
+  # Host Specification
+  # ============================
+  hostSpec = {
+    hostName = "desktop";
+    keyboardLayout = "us";
+  };
+
+  networking = {
+    networkmanager.enable = true;
+    enableIPv6 = false;
+  };
+
+  boot.loader = {
+    systemd-boot = {
+      enable = true;
+      configurationLimit = lib.mkDefault 10;
+    };
+    efi.canTouchEfiVariables = true;
+    timeout = 3;
+  };
+
+  boot.initrd = {
+    systemd.enable = true;
+  };
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  system.stateVersion = "24.11";
 }

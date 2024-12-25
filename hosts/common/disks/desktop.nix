@@ -1,8 +1,4 @@
 {
-  pkgs,
-  config,
-  ...
-}: {
   disko.devices = {
     disk = {
       primary = {
